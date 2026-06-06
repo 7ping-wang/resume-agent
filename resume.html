@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>王彩萍 - 业财产品经理</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+  :root {
+    --primary: #0f1d36;
+    --accent: #1e4d8c;
+    --accent-light: #e8f0fe;
+    --border: #dde4ed;
+    --text: #1a1a2e;
+    --text-secondary: #4a5568;
+    --bg-gray: #f7f9fb;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    color: var(--text);
+    background: #e8ecf1;
+    display: flex;
+    justify-content: center;
+    line-height: 1.45;
+  }
+
+  .page {
+    width: 210mm;
+    background: white;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    margin: 16px 0;
+    padding: 0;
+  }
+
+  /* ===== HEADER ===== */
+  .header {
+    background: var(--primary);
+    color: white;
+    padding: 14px 32px;
+    text-align: center;
+  }
+  .header h1 { font-size: 26px; font-weight: 700; letter-spacing: 3px; margin-bottom: 4px; }
+  .header .subtitle { font-size: 12px; color: #8fa4c4; margin-bottom: 8px; }
+  .header .contact-row {
+    display: flex; justify-content: center; gap: 20px;
+    font-size: 11px; color: #c5d0e0; flex-wrap: wrap;
+  }
+
+  /* ===== INFO STRIP (replaced by sidebar) ===== */
+  .main { display: flex; }
+
+  /* ===== SIDEBAR ===== */
+  .sidebar {
+    width: 28%;
+    background: #f8fafc;
+    padding: 16px 18px;
+    border-right: 1px solid var(--border);
+  }
+  .sidebar-section { margin-bottom: 16px; }
+  .sidebar-section h3 {
+    font-size: 9px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 2px; color: var(--accent); margin-bottom: 8px;
+    padding-bottom: 3px; border-bottom: 2px solid var(--accent);
+  }
+  .sidebar .edu-item { font-size: 10px; color: var(--text-secondary); margin-bottom: 2px; }
+  .sidebar .edu-item strong { color: var(--text); font-size: 11px; }
+  .sidebar ul { list-style: none; }
+  .sidebar li {
+    font-size: 9.5px; color: var(--text-secondary); padding: 1px 0;
+    display: flex; align-items: flex-start; gap: 4px;
+  }
+  .sidebar li::before {
+    content: '◆'; color: var(--accent); font-size: 5px; flex-shrink: 0;
+    margin-top: 5px;
+  }
+  .sidebar .tag-row { display: flex; flex-wrap: wrap; gap: 4px; }
+  .sidebar .tag {
+    display: inline-block; font-size: 8px; color: var(--accent);
+    background: var(--accent-light); padding: 2px 6px;
+    border-radius: 3px; white-space: nowrap;
+  }
+
+  /* ===== RIGHT CONTENT ===== */
+  .content { width: 72%; padding: 14px 24px; }
+
+  /* Section title */
+  .section-title {
+    font-size: 12px; font-weight: 700; color: var(--primary);
+    padding-bottom: 5px; margin-bottom: 10px; margin-top: 4px;
+    border-bottom: 2px solid var(--primary);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-title .en { font-weight: 400; color: #a0aec0; font-size: 10px; }
+
+  /* Profile */
+  .profile-text { font-size: 11px; color: var(--text-secondary); line-height: 1.65; margin-bottom: 6px; }
+
+  /* ===== COMPANY BLOCK ===== */
+  .company-block {
+    margin-bottom: 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .company-header {
+    background: var(--primary);
+    color: white;
+    padding: 7px 18px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .company-header .name { font-size: 13px; font-weight: 700; }
+  .company-header .period { font-size: 11px; color: #8fa4c4; }
+  .company-body { padding: 9px 18px; }
+  .company-intro { font-size: 11px; color: var(--text-secondary); margin-bottom: 7px; }
+
+  /* ===== PROJECT CARD ===== */
+  .project-card {
+    background: var(--bg-gray);
+    border-left: 3px solid var(--accent);
+    padding: 7px 14px;
+    margin-bottom: 5px;
+    border-radius: 0 4px 4px 0;
+  }
+  .project-card .proj-name {
+    font-size: 11px; font-weight: 600; color: var(--primary); margin-bottom: 2px;
+  }
+  .project-card .proj-detail {
+    font-size: 9.5px; color: var(--text-secondary); margin-bottom: 1px; line-height: 1.4;
+  }
+  .project-card .proj-highlight {
+    font-size: 9.5px; color: var(--accent); font-weight: 600;
+    background: var(--accent-light); padding: 3px 8px;
+    border-radius: 3px; margin-top: 4px;
+  }
+  .label {
+    display: inline-block; font-size: 8px; font-weight: 700; color: var(--accent);
+    background: var(--accent-light); padding: 1px 5px; border-radius: 3px;
+    margin-right: 3px; vertical-align: middle; min-width: 28px; text-align: center;
+  }
+
+  /* ===== COMPACT PROJECT (汉得 小项目) ===== */
+  .compact-project {
+    font-size: 10px; color: var(--text-secondary); padding: 4px 0;
+    border-bottom: 1px dotted var(--border);
+    line-height: 1.45;
+  }
+  .compact-project:last-child { border-bottom: none; }
+  .compact-project strong { color: var(--primary); }
+
+  /* ===== STRENGTHS & AI ===== */
+  .ai-intro { font-size: 10px; color: #64748b; margin-bottom: 8px; }
+  .list-item {
+    font-size: 10px; color: var(--text-secondary); margin-bottom: 3px;
+    padding-left: 12px; position: relative;
+  }
+  .list-item::before {
+    content: '▸'; position: absolute; left: 0; top: 0;
+    color: var(--accent); font-size: 10px;
+  }
+
+  @media print {
+    body { background: white; margin: 0; }
+    .page { box-shadow: none; margin: 0; width: 100%; }
+    @page { size: A4; margin: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ===== HEADER ===== -->
+  <div class="header">
+    <h1>王彩萍</h1>
+    <div class="subtitle">WANG CAIPING &nbsp;|&nbsp; 业财产品经理 &nbsp;|&nbsp; Business-Finance PM</div>
+    <div class="contact-row">
+      <span>15715923908</span>
+      <span>1652669373@qq.com</span>
+      <span>上海 · 29岁</span>
+      <span>8年产品经验</span>
+      <span>随时到岗</span>
+    </div>
+  </div>
+
+  <!-- ===== MAIN: SIDEBAR + CONTENT ===== -->
+  <div class="main">
+    <!-- Left Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-section">
+        <h3>教育背景</h3>
+        <div class="edu-item"><strong>福州大学 (211)</strong></div>
+        <div class="edu-item" style="font-size:9px;color:#94a3b8">生物工程 · 本科</div>
+        <div class="edu-item" style="font-size:9px;color:#94a3b8">2014.09 - 2018.06</div>
+        <div class="edu-item" style="font-size:9px;color:#64748b">🏅 专业前10%</div>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>核心技能</h3>
+        <ul>
+          <li>业财一体化架构</li>
+          <li>预算 · 费控 · 折让</li>
+          <li>采购结算 · 应付</li>
+          <li>业财凭证对接</li>
+          <li>权限矩阵设计</li>
+          <li>供应链金融(OCS/FMS)</li>
+          <li>Oracle EBS 实施</li>
+          <li>ERP / DMS / APS / SRM</li>
+          <li>0-1 产品设计</li>
+          <li>跨部门项目管理</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>行业经验</h3>
+        <ul>
+          <li>医药生物 · 智能制造</li>
+          <li>家居制造 · 航天军工</li>
+          <li>物业服务 · 供应链物流</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>AI 工具</h3>
+        <ul>
+          <li>Claude Code</li>
+          <li>Coze Agent</li>
+          <li>DeepSeek API</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Right Content -->
+    <div class="content">
+
+    <!-- Profile -->
+    <div class="section-title">个人简介 <span class="en">PROFILE</span></div>
+    <p class="profile-text">
+      8年大型企业级B端产品经验，专注<strong>业财一体化与财务系统建设</strong>。主导预算、费控、销售折让、采购结算等多个财务核心模块从0到1，熟悉权限矩阵设计、业财对接与凭证链路。兼具乙方咨询交付与甲方产品管理双重视角，擅长在复杂业务场景中沉淀可复用的设计方法论。
+    </p>
+
+    <!-- Work Experience -->
+    <div class="section-title">工作经验 <span class="en">EXPERIENCE</span></div>
+
+    <!-- ===== 金赛药业 ===== -->
+    <div class="company-block">
+      <div class="company-header">
+        <span class="name">长春金赛药业有限公司 · 产品经理</span>
+        <span class="period">2023.11 - 2025.12</span>
+      </div>
+      <div class="company-body">
+        <p class="company-intro">中国领先生物制药企业，生长激素、生殖健康、肿瘤治疗领域国内领先。主导财务、供应链相关系统从0到1产品设计与落地。</p>
+
+        <div class="project-card">
+          <div class="proj-name">预算管理系统 <span style="font-weight:400;font-size:10px;color:#94a3b8">2023.11 - 2025.02</span></div>
+          <div class="proj-detail"><span class="label">背景</span> 原预算依赖Excel，编制周期长、版本不统一，仅能事后看；公司分营销/职能/研发/供应链四领域，口径与管控规则差异显著。</div>
+          <div class="proj-detail"><span class="label">职责</span> 独立完成编制/调整/控制/分析全模块设计，针对四领域定制预算模型与控制规则。</div>
+          <div class="proj-detail"><span class="label">权限</span> 基于组织树+角色+数据域三元组建模，构建多维度权限矩阵，支持区域级编制/多级审批/层级穿透汇总；此方法论后在折让、费控等系统延续应用。</div>
+          <div class="proj-detail"><span class="label">业财</span> 预算控制规则与费控系统实时校验对接，实现事前预算管控。</div>
+          <div class="proj-highlight">★ 编制周期 60天 → 21天 (-65%)  |  100% 事前控制超支拦截  |  沉淀跨系统权限设计方法论</div>
+        </div>
+
+        <div class="project-card">
+          <div class="proj-name">销售折让管理系统 & 资质系统运维 <span style="font-weight:400;font-size:10px;color:#94a3b8">2025.03 - 2025.12</span></div>
+          <div class="proj-detail"><span class="label">背景</span> 返利政策复杂（多层级折扣/阶梯返利/池化结算），原Excel核算效率低且易出错。</div>
+          <div class="proj-detail"><span class="label">职责</span> 独立负责从0到1产品设计与落地。核心模块含协议管理、数据采集、计算引擎、折让池、结算对账、财务数据对接。</div>
+          <div class="proj-detail"><span class="label">业财</span> 设计折让确认后业务数据流向，确保业务事件与下游会计凭证生成所需字段口径一致。</div>
+          <div class="proj-highlight">★ 计算效率 +90%  |  准确率近100%  |  自动化对账减少商务纠纷  |  权限层延续方法论快速落地</div>
+        </div>
+
+        <div class="project-card">
+          <div class="proj-name">商旅 & 费控平台 <span style="font-weight:400;font-size:10px;color:#94a3b8">2024.01 - 2024.06</span></div>
+          <div class="proj-detail"><span class="label">职责</span> 主导业务调研、多供应商对接（机票/酒店/打车）、系统集成与全公司推广。</div>
+          <div class="proj-detail"><span class="label">业财</span> 打通"申请-预订-报销-支付"全链路，对接预算系统实现预算-费用-资金实时联动。</div>
+          <div class="proj-highlight">★ 差旅成本 -9%  |  报销效率 +70%  |  费用合规率 100%</div>
+        </div>
+
+        <div class="project-card">
+          <div class="proj-name">DMS 订单管理系统切换 <span style="font-weight:400;font-size:10px;color:#94a3b8">2025.09 - 2025.12</span></div>
+          <div class="proj-detail">自主研发DMS替换各BU外采OMS，完成需求调研与部分方案设计，协调开发测试推动上线。</div>
+        </div>
+
+        <div class="project-card">
+          <div class="proj-name">银企直连项目 <span style="font-weight:400;font-size:10px;color:#94a3b8">(前期参与)</span></div>
+          <div class="proj-detail">参与项目启动阶段，完成业务范围界定与启动方案输出，明确目标银行清单、对接范围与核心业务需求；采供应商交付模式，后续由团队成员接手，项目按计划上线。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 永升物业 ===== -->
+    <div class="company-block">
+      <div class="company-header">
+        <span class="name">上海永升物业管理有限公司 · 产品专家</span>
+        <span class="period">2023.06 - 2023.11</span>
+      </div>
+      <div class="company-body">
+        <p class="company-intro">旭辉集团旗下核心物业服务平台。主导"永小乐"（员工端）产品迭代与采购数字化建设，兼管"永升活"（业主端），管理近20人开发团队。</p>
+        <div class="project-card">
+          <div class="proj-name">慧采商城嵌入式接入 · 采购数字化</div>
+          <div class="proj-detail"><span class="label">职责</span> 将京东慧采采购平台嵌入"永小乐"APP，实现一键采购、需求提报、多级审批联动、物流跟踪全流程线上化。</div>
+          <div class="proj-detail"><span class="label">集成</span> 设计APP内慧采商城入口与采购全流程交互；对接京东慧采API实现商品同步、订单回传、物流状态实时回写。</div>
+          <div class="proj-detail"><span class="label">流程</span> 打通原有采购审批系统：APP提交 → OA多级审批 → 结果回写APP → 触发下单。配置项目维度预算管控与分级审批规则。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 普洛斯 ===== -->
+    <div class="company-block">
+      <div class="company-header">
+        <span class="name">普洛斯 GLP · 产品经理 / 项目经理</span>
+        <span class="period">2022.03 - 2023.04</span>
+      </div>
+      <div class="company-body">
+        <p class="company-intro">全球领先的供应链、大数据及新能源产业服务与投资管理公司。</p>
+        <div class="project-card">
+          <div class="proj-name">供应链金融服务平台 OCS 从0到1 · 业财一体化标杆</div>
+          <div class="proj-detail"><span class="label">职责</span> 参与OCS（内部核心订单管理系统）从0到1搭建，聚焦供应链金融与业财一体化场景。</div>
+          <div class="proj-detail"><span class="label">成果</span> 主导进销存一体化平台产品设计，2个月完成初版上线，支持95%以上场景化业务。</div>
+          <div class="proj-detail"><span class="label">业财</span> 设计OCS与FMS财务系统对接方案，推动应付模块集成；触发FMS自动生成应付凭证，保障业务事件与财务凭证字段口径一致，实现业财数据全链路打通。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 汉得信息 ===== -->
+    <div class="company-block">
+      <div class="company-header">
+        <span class="name">上海汉得信息技术股份有限公司 · IT 咨询顾问</span>
+        <span class="period">2018.03 - 2022.03</span>
+      </div>
+      <div class="company-body">
+        <p class="company-intro">国内成立最早、规模最大的IT咨询服务公司。负责头部客户Oracle EBS实施、定制化开发与业财一体化建设，项目金额200-1000万+，覆盖制造、医药、家居、航天多领域。</p>
+
+        <div class="project-card">
+          <div class="proj-name">北京航天一院 · 采购结算平台 <span style="font-weight:400;font-size:10px;color:#94a3b8">2020.07 - 2021.01</span> · 项目经理+产品经理</div>
+          <div class="proj-detail">构建统一物资结算平台，集成采购/入库/合同多业务系统数据，设计对账、发票、付款管理全模块；打通采购到付款全链路，优化凭证生成的源数据准确性。</div>
+          <div class="proj-highlight">★ 上线后显著提升财务效率与透明度  |  获客户书面感谢信</div>
+        </div>
+
+        <div class="project-card">
+          <div class="proj-name">上海汇众汽车 · 商务一体化项目 <span style="font-weight:400;font-size:10px;color:#94a3b8">2021.02 - 2021.06</span> · 项目经理</div>
+          <div class="proj-detail">负责采购与调拨合同全流程系统设计，推动SRM与合同管理系统集成，项目按期上线。</div>
+        </div>
+
+        <div class="project-card">
+          <div class="proj-name">大参林医药集团 · 生产制造项目 <span style="font-weight:400;font-size:10px;color:#94a3b8">2019.08 - 2020.07</span> · 制造模块负责人</div>
+          <div class="proj-detail">负责GMD/GME模块方案设计，推动HGXP系统与ERP集成，实现批次精细化管理；完成业财一体化目标，符合GSP法规要求。</div>
+        </div>
+
+        <div class="project-card">
+          <div class="proj-name" style="margin-bottom:4px;">其他代表项目</div>
+          <div class="compact-project"><strong>埃夫特 · 共享工厂APS系统</strong>（2021.06-2022.03）｜从0到1设计APS，支持多工厂协同与智能排程</div>
+          <div class="compact-project"><strong>华润三九 · ERP推广与接口</strong>（2019.06-2020.07）｜4个药厂Oracle EBS全模块推广 + ERP与MES接口，GMP合规</div>
+          <div class="compact-project"><strong>箭牌家居 · ERP实施</strong>（2018.03-2019.06）｜Oracle EBS制造模块0-1实施，覆盖采购/生产/库存/销售全流程</div>
+          <div class="compact-project"><strong>苏州汇川 · ASCP优化</strong>（2021.01-2021.03）｜设计MDS/MPS需求冲减平台</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Practice -->
+    <div class="section-title">AI 实践与自驱学习 <span class="en">AI PRACTICE</span></div>
+    <p class="ai-intro">2025.12 - 至今 · 职业过渡期系统学习AI工具与应用开发，主动探索"AI × 财务/企业系统"的结合点：</p>
+    <div class="list-item">简历智能匹配工具：基于LLM的简历×JD自动匹配，输出匹配度评分与改进建议（个人项目·全栈）</div>
+    <div class="list-item">场景化推荐工具CloseAI：基于用户场景生成个性化推荐（Claude Code + 前端框架）</div>
+    <div class="list-item">学习路径生成器：接入DeepSeek API，按目标生成定制化学习计划</div>
+    <div class="list-item">个人Agent配置：在Coze平台配置长期陪伴型Agent，打通IM/邮箱/日历，深度使用记忆与技能机制</div>
+    <p style="font-size:10px;color:#94a3b8;margin-top:6px;">持续关注：智能费用分类 / 异常波动预警 / 报表助手 / 智能审核等AI企业财务应用方向。</p>
+
+    <!-- Key Strengths -->
+    <div class="section-title">核心优势 <span class="en">KEY STRENGTHS</span></div>
+    <div class="list-item"><strong>财务系统全模块经验</strong> — 预算/费控/折让结算/采购结算/应付，熟悉业财一体化全链路</div>
+    <div class="list-item"><strong>权限设计方法论</strong> — 沉淀"组织树+角色+数据域"三元组权限矩阵设计，跨系统一致应用</div>
+    <div class="list-item"><strong>业财对接专家</strong> — 熟悉业务事件到财务凭证（FMS/SAP）的完整链路，含字段映射、触发时机、数据校验</div>
+    <div class="list-item"><strong>复杂业务产品化</strong> — 擅长将多层级折让、滚动预算、多领域差异化口径抽象为可配置的产品架构</div>
+    <div class="list-item"><strong>跨部门项目管理</strong> — 需求调研到上线运维全周期管控，推动财务、业务、IT三方对齐</div>
+    <div class="list-item"><strong>跨行业快速迁移</strong> — 服务医药、制造、家居、航天、物业、物流多个行业头部客户，能3个月吃透陌生业务领域</div>
+    <div class="list-item"><strong>AI 工具实战</strong> — 主动学习使用Claude Code/Coze等工具，对AI×企业财务结合方向有持续观察</div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>

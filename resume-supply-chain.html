@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>王彩萍 - 供应链产品经理</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+  :root {
+    --primary: #0f1d36;
+    --accent: #1e4d8c;
+    --accent-light: #e8f0fe;
+    --border: #dde4ed;
+    --text: #1a1a2e;
+    --text-secondary: #4a5568;
+    --bg-gray: #f7f9fb;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    color: var(--text);
+    background: #e8ecf1;
+    display: flex;
+    justify-content: center;
+    line-height: 1.45;
+  }
+
+  .page {
+    width: 210mm;
+    background: white;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    margin: 16px 0;
+    padding: 0;
+  }
+
+  .header {
+    background: var(--primary);
+    color: white;
+    padding: 14px 32px;
+    text-align: center;
+  }
+  .header h1 { font-size: 26px; font-weight: 700; letter-spacing: 3px; margin-bottom: 4px; }
+  .header .subtitle { font-size: 12px; color: #8fa4c4; margin-bottom: 8px; }
+  .header .contact-row {
+    display: flex; justify-content: center; gap: 20px;
+    font-size: 11px; color: #c5d0e0; flex-wrap: wrap;
+  }
+
+  .main { display: flex; }
+
+  .sidebar {
+    width: 28%;
+    background: #f8fafc;
+    padding: 16px 18px;
+    border-right: 1px solid var(--border);
+  }
+  .sidebar-section { margin-bottom: 16px; }
+  .sidebar-section h3 {
+    font-size: 9px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 2px; color: var(--accent); margin-bottom: 8px;
+    padding-bottom: 3px; border-bottom: 2px solid var(--accent);
+  }
+  .sidebar .edu-item { font-size: 10px; color: var(--text-secondary); margin-bottom: 2px; }
+  .sidebar .edu-item strong { color: var(--text); font-size: 11px; }
+  .sidebar ul { list-style: none; }
+  .sidebar li {
+    font-size: 9.5px; color: var(--text-secondary); padding: 1px 0;
+    display: flex; align-items: flex-start; gap: 4px;
+  }
+  .sidebar li::before { content: '◆'; color: var(--accent); font-size: 5px; flex-shrink: 0; margin-top: 5px; }
+
+  .content { width: 72%; padding: 14px 24px; }
+
+  .section-title {
+    font-size: 12px; font-weight: 700; color: var(--primary);
+    padding-bottom: 5px; margin-bottom: 10px; margin-top: 4px;
+    border-bottom: 2px solid var(--primary);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-title .en { font-weight: 400; color: #a0aec0; font-size: 10px; }
+
+  .profile-text { font-size: 11px; color: var(--text-secondary); line-height: 1.65; margin-bottom: 6px; }
+
+  .company-block {
+    margin-bottom: 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .company-header {
+    background: var(--primary);
+    color: white;
+    padding: 7px 18px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .company-header .name { font-size: 13px; font-weight: 700; }
+  .company-header .period { font-size: 11px; color: #8fa4c4; }
+  .company-body { padding: 9px 18px; }
+  .company-intro { font-size: 11px; color: var(--text-secondary); margin-bottom: 7px; }
+
+  .project-card {
+    background: var(--bg-gray);
+    border-left: 3px solid var(--accent);
+    padding: 7px 14px;
+    margin-bottom: 5px;
+    border-radius: 0 4px 4px 0;
+  }
+  .project-card .proj-name { font-size: 11px; font-weight: 600; color: var(--primary); margin-bottom: 2px; }
+  .project-card .proj-detail { font-size: 9.5px; color: var(--text-secondary); margin-bottom: 1px; line-height: 1.4; }
+  .project-card .proj-highlight {
+    font-size: 9.5px; color: var(--accent); font-weight: 600;
+    background: var(--accent-light); padding: 3px 8px;
+    border-radius: 3px; margin-top: 4px;
+  }
+  .label { display: inline-block; font-size: 8px; font-weight: 700; color: var(--accent); background: var(--accent-light); padding: 1px 5px; border-radius: 3px; margin-right: 3px; vertical-align: middle; min-width: 28px; text-align: center; }
+
+  .compact-project { font-size: 10px; color: var(--text-secondary); padding: 4px 0; border-bottom: 1px dotted var(--border); line-height: 1.45; }
+  .compact-project:last-child { border-bottom: none; }
+  .compact-project strong { color: var(--primary); }
+
+  .ai-intro { font-size: 10px; color: #64748b; margin-bottom: 8px; }
+  .list-item {
+    font-size: 10px; color: var(--text-secondary); margin-bottom: 3px;
+    padding-left: 12px; position: relative;
+  }
+  .list-item::before { content: '▸'; position: absolute; left: 0; top: 0; color: var(--accent); font-size: 10px; }
+
+  @media print {
+    body { background: white; margin: 0; }
+    .page { box-shadow: none; margin: 0; width: 100%; }
+    @page { size: A4; margin: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <h1>王彩萍</h1>
+    <div class="subtitle">WANG CAIPING &nbsp;|&nbsp; 供应链产品经理 &nbsp;|&nbsp; Supply Chain PM</div>
+    <div class="contact-row">
+      <span>15715923908</span>
+      <span>1652669373@qq.com</span>
+      <span>上海 · 29岁</span>
+      <span>8年产品经验</span>
+      <span>随时到岗</span>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="sidebar">
+      <div class="sidebar-section">
+        <h3>教育背景</h3>
+        <div class="edu-item"><strong>福州大学 (211)</strong></div>
+        <div class="edu-item" style="font-size:9px;color:#94a3b8">生物工程 · 本科</div>
+        <div class="edu-item" style="font-size:9px;color:#94a3b8">2014.09 - 2018.06</div>
+        <div class="edu-item" style="font-size:9px;color:#64748b">🏅 专业前10%</div>
+      </div>
+      <div class="sidebar-section">
+        <h3>核心技能</h3>
+        <ul>
+          <li>业财一体化架构</li>
+          <li>预算 · 费控 · 折让</li>
+          <li>采购结算 · 应付</li>
+          <li>Oracle EBS 实施</li>
+          <li>0-1 产品设计</li>
+          <li>权限矩阵设计</li>
+          <li>DMS / ERP / APS 系统</li>
+          <li>跨部门项目管理</li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <h3>AI 能力</h3>
+        <ul>
+          <li>Claude Code</li>
+          <li>Agent架构设计</li>
+          <li>Prompt Engineering</li>
+          <li>DeepSeek API</li>
+          <li>AI评估(Precision/Recall)</li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <h3>行业经验</h3>
+        <ul>
+          <li>医药生物 · 智能制造</li>
+          <li>家居制造 · 航天军工</li>
+          <li>物业服务 · 供应链物流</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="section-title">个人简介 <span class="en">PROFILE</span></div>
+      <p class="profile-text">
+        8年大型企业级B端产品设计与项目管理经验，聚焦<strong>制造/医药行业供应链、生产、财务数字化</strong>，主导过多款从0到1的业务和财务系统，兼具乙方项目交付与甲方产品管理经验。近期系统学习AI技术，具备Agent架构设计与AI API集成实战能力，持续探索"AI×企业系统"的结合方向。
+      </p>
+
+      <div class="section-title">工作经验 <span class="en">EXPERIENCE</span></div>
+
+      <!-- 金赛药业 -->
+      <div class="company-block">
+        <div class="company-header">
+          <span class="name">长春金赛药业有限公司 · 产品经理</span>
+          <span class="period">2023.11 - 2025.12</span>
+        </div>
+        <div class="company-body">
+          <p class="company-intro">中国领先生物制药企业，生长激素、生殖健康、肿瘤治疗领域国内领先。主导财务、供应链相关系统从0到1产品设计与落地。</p>
+          <div class="project-card">
+            <div class="proj-name">预算管理系统 <span style="font-weight:400;font-size:10px;color:#94a3b8">2023.11 - 2025.02</span></div>
+            <div class="proj-detail">独立完成编制/调整/控制/分析全模块设计，针对营销/职能/研发/供应链四领域定制预算模型与控制规则。</div>
+            <div class="proj-detail">基于组织树+角色+数据域三元组建模，构建多维度权限矩阵；此方法论后在折让、费控等系统延续应用。预算控制规则与费控系统实时校验对接，实现事前预算管控。</div>
+            <div class="proj-highlight">★ 编制周期 60天→21天（-65%） | 100%事前控制超支拦截 | 沉淀跨系统权限设计方法论</div>
+          </div>
+          <div class="project-card">
+            <div class="proj-name">销售折让管理系统 & 资质系统运维 <span style="font-weight:400;font-size:10px;color:#94a3b8">2025.03 - 2025.12</span></div>
+            <div class="proj-detail">独立负责从0到1产品设计与落地。核心模块含协议管理、数据自动采集、计算引擎、折让池管理、结算对账。</div>
+            <div class="proj-detail">抽象协议匹配规则为可配置引擎，业务人员改规则无需开发介入。设计折让确认后业务数据流向，保障业财口径一致。</div>
+            <div class="proj-highlight">★ 计算效率+90% | 准确率近100% | 自动化对账减少商务纠纷</div>
+          </div>
+          <div class="project-card">
+            <div class="proj-name">商旅 & 费控平台 <span style="font-weight:400;font-size:10px;color:#94a3b8">2024.01 - 2024.06</span></div>
+            <div class="proj-detail">主导业务调研、多供应商对接（机票/酒店/打车）、系统集成与全公司推广。打通"申请-预订-报销-支付"全链路，对接预算系统实现预算-费用-资金实时联动。</div>
+            <div class="proj-highlight">★ 差旅成本-9% | 报销效率+70% | 费用合规率100%</div>
+          </div>
+          <div class="project-card">
+            <div class="proj-name">DMS 订单管理系统切换 <span style="font-weight:400;font-size:10px;color:#94a3b8">2025.09 - 2025.12</span></div>
+            <div class="proj-detail">自主研发DMS替换各BU外采OMS，完成需求调研与方案设计，协调开发测试推动上线。</div>
+            <div class="proj-highlight">★ 实现集团订单管理统一化，打通与ERP的数据流转</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 永升物业 -->
+      <div class="company-block">
+        <div class="company-header">
+          <span class="name">上海永升物业管理有限公司 · 产品专家</span>
+          <span class="period">2023.06 - 2023.11</span>
+        </div>
+        <div class="company-body">
+          <p class="company-intro">旭辉集团旗下核心物业服务平台。主导"永小乐"（员工端）产品迭代与采购数字化建设，兼管"永升活"（业主端），管理近20人开发团队。</p>
+          <div class="project-card">
+            <div class="proj-name">慧采商城嵌入式接入 · 采购数字化</div>
+            <div class="proj-detail">将京东慧采采购平台嵌入"永小乐"APP，实现一键采购、需求提报、多级审批联动、物流跟踪全流程线上化。</div>
+            <div class="proj-detail">对接京东慧采API实现商品同步、订单回传、物流状态实时回写；打通OA审批→结果回写→触发下单全链路。配置项目维度预算管控与分级审批规则。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 普洛斯 -->
+      <div class="company-block">
+        <div class="company-header">
+          <span class="name">普洛斯 GLP · 产品经理 / 项目经理</span>
+          <span class="period">2022.03 - 2023.04</span>
+        </div>
+        <div class="company-body">
+          <p class="company-intro">全球领先的供应链、大数据及新能源产业服务与投资管理公司。</p>
+          <div class="project-card">
+            <div class="proj-name">供应链金融服务平台 OCS 从0到1</div>
+            <div class="proj-detail">参与OCS（内部核心订单管理系统）从0到1搭建。主导进销存一体化平台产品设计，2个月完成初版上线，支持95%以上场景化业务。</div>
+            <div class="proj-detail">设计OCS与FMS财务系统对接方案，推动应付模块集成，触发FMS自动生成应付凭证，实现业财数据全链路打通。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 汉得信息 -->
+      <div class="company-block">
+        <div class="company-header">
+          <span class="name">上海汉得信息技术股份有限公司 · IT 咨询顾问</span>
+          <span class="period">2018.03 - 2022.03</span>
+        </div>
+        <div class="company-body">
+          <p class="company-intro">国内成立最早、规模最大的IT咨询服务公司。负责头部客户Oracle EBS实施与业财一体化建设，项目金额200-1000万+，覆盖制造、医药、家居、航天多领域。</p>
+          <div class="project-card">
+            <div class="proj-name">埃夫特 · 共享工厂APS高级计划排程系统 <span style="font-weight:400;font-size:10px;color:#94a3b8">2021.06 - 2022.03</span> · 产品经理+敏捷教练</div>
+            <div class="proj-detail">从0到1设计APS，支持多工厂协同与资源优化。将生产规则抽象为可配置策略，支持动态调整与实时调度。</div>
+            <div class="proj-highlight">★ 完成APS全模块设计并进入测试，支持多工厂协同与智能排程</div>
+          </div>
+          <div class="project-card">
+            <div class="proj-name">北京航天一院 · 采购结算平台 <span style="font-weight:400;font-size:10px;color:#94a3b8">2020.07 - 2021.01</span> · 项目经理+产品经理</div>
+            <div class="proj-detail">构建统一物资结算平台，集成采购/入库/合同多系统数据，设计对账、发票、付款全模块；打通采购到付款全链路。</div>
+            <div class="proj-highlight">★ 显著提升财务效率与透明度 | 获客户书面感谢信</div>
+          </div>
+          <div class="project-card">
+            <div class="proj-name">华润三九 · 四个药厂Oracle EBS全模块推广 <span style="font-weight:400;font-size:10px;color:#94a3b8">2019.06 - 2019.08</span> · 制造模块负责人→项目经理</div>
+            <div class="proj-detail">负责4个药厂Oracle EBS全模块实施上线，涵盖制造、财务、供应链模块。实现集团统一管控，支持GMP合规。</div>
+          </div>
+          <div class="project-card">
+            <div class="proj-name">华润三九 · ERP与MES系统接口对接 <span style="font-weight:400;font-size:10px;color:#94a3b8">2020.02 - 2020.07</span> · 制造模块负责人</div>
+            <div class="proj-detail">主导Oracle EBS与MES数据接口设计，实现生产过程数据从MES自动同步至ERP，消除人工录入环节，保障GMP合规全链路数据可追溯。</div>
+          </div>
+          <div class="project-card">
+            <div class="proj-name">大参林医药集团 · 生产制造项目 <span style="font-weight:400;font-size:10px;color:#94a3b8">2019.08 - 2020.07</span> · 制造模块负责人</div>
+            <div class="proj-detail">负责GMD/GME模块方案设计，推动HGXP系统与ERP集成，完成业财一体化，符合GSP法规要求。</div>
+          </div>
+          <div class="project-card">
+            <div class="proj-name" style="margin-bottom:4px;">其他代表项目</div>
+            <div class="compact-project"><strong>箭牌家居 · ERP实施</strong>（2018.03-2019.06）｜制造模块0-1实施，覆盖采购/生产/库存/销售全流程</div>
+            <div class="compact-project"><strong>上海汇众汽车 · 商务一体化</strong>（2021.02-2021.06）｜采购与调拨合同全流程系统设计，SRM集成</div>
+            <div class="compact-project"><strong>苏州汇川 · ASCP优化</strong>（2021.01-2021.03）｜设计MDS/MPS需求冲减平台</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Practice -->
+      <div class="section-title">AI 实践与自驱学习 <span class="en">AI PRACTICE</span></div>
+      <p class="ai-intro">2025.12 - 至今 · 职业过渡期系统学习AI技术，聚焦"AI×企业系统"结合方向</p>
+      <div class="list-item"><strong>多Agent协同折让管理系统</strong>（核心作品）— 基于金赛真实业务场景，设计并搭建四Agent协同的折让结算系统（Filter→Match→Calc→Report）。Agent嵌入折让匹配环节——AI自动解决交叉协议匹配冲突，置信度分级处理（高自动+低人工），人工审核结果反哺模型形成持续学习闭环。含协议管理、状态流转、按经销商分组生成结算单。采用Prompt Engineering五要素设计生产级Prompt，确保AI输出稳定可解析。</div>
+      <div class="list-item"><strong>AI PRD审阅工具</strong> — 接入DeepSeek API，实现工程师/高管/用户研究员三视角并行审阅PRD。人工修改结果反哺优化后续审阅。</div>
+      <div class="list-item"><strong>GMP合规AI助手</strong> — 搭建GMP法规查询工具，覆盖35条核心GMP条款，支持关键词搜索与分类浏览。架构预留RAG接口——可接入大模型实现语义问答。</div>
+      <p style="font-size:10px;color:#94a3b8;margin-top:6px;">持续关注：智能费用分类 | 异常波动预警 | 报表助手 | 智能审核等AI×企业应用方向</p>
+
+      <!-- Key Strengths -->
+      <div class="section-title">核心优势 <span class="en">KEY STRENGTHS</span></div>
+      <div class="list-item"><strong>复杂系统产品化能力</strong> — 主导多款百万级企业级系统从0到1建设，擅长将复杂业务规则抽象为可配置的产品架构</div>
+      <div class="list-item"><strong>业财一体化专家</strong> — 兼具财务系统设计与业务理解，熟悉业务事件到财务凭证的完整链路</div>
+      <div class="list-item"><strong>Agent架构设计</strong> — 具备多Agent协同系统设计能力，熟悉Agent边界划分、状态流转、人机协作模式</div>
+      <div class="list-item"><strong>AI评估体系</strong> — 掌握Precision/Recall/Confidence三指标，能设计AI功能上线评估与持续优化闭环</div>
+      <div class="list-item"><strong>全流程项目管理</strong> — 需求调研到上线运维全周期管控，具备项目经理思维与产品战略视野</div>
+      <div class="list-item"><strong>跨领域快速迁移</strong> — 服务医药、制造、家居、航天、物业、物流等多个行业头部客户</div>
+      <div class="list-item"><strong>AI工具实战</strong> — Claude Code / DeepSeek API / Prompt Engineering / Vibe Coding原型搭建</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
